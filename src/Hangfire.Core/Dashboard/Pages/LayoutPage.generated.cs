@@ -89,9 +89,9 @@ WriteLiteral("\">\r\n<head>\r\n    <title>");
             
             #line default
             #line hidden
-WriteLiteral(" - Hangfire</title>\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n " +
-"   <meta charset=\"utf-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width" +
-", initial-scale=1.0\">\r\n");
+WriteLiteral(" </title>\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n    <meta c" +
+"harset=\"utf-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-" +
+"scale=1.0\">\r\n");
 
 
             
@@ -126,18 +126,12 @@ WriteLiteral(@""">
                             <span class=""icon-bar""></span>
                             <span class=""icon-bar""></span>
                         </button>
-                        <a class=""navbar-brand"" href=""");
+                        ");
 
 
-            
-            #line 32 "..\..\Dashboard\Pages\LayoutPage.cshtml"
-                                                 Write(Url.Home());
 
-            
-            #line default
-            #line hidden
-WriteLiteral("\">Hangfire Dashboard</a>\r\n                    </div>\r\n                    <div cl" +
-"ass=\"collapse navbar-collapse\">\r\n                        ");
+WriteLiteral("\r\n                    </div>\r\n                    <div class=\"collapse navbar-col" +
+"lapse\">\r\n                        ");
 
 
             
@@ -203,30 +197,13 @@ WriteLiteral("                    </div>\r\n                    <!--/.nav-collap
             
             #line default
             #line hidden
-WriteLiteral(@"
-            </div>
-        </div>
-
-        <div id=""footer"">
-            <div class=""container"">
-                <ul class=""list-inline credit"">
-                    <li>
-                        <a href=""http://hangfire.io/"" target=""_blank"">Hangfire ");
+WriteLiteral("\r\n            </div>\r\n        </div>\r\n\r\n        <div id=\"footer\">\r\n            <d" +
+"iv class=\"container\">\r\n                <ul class=\"list-inline credit\">\r\n        " +
+"            \r\n                    <li>");
 
 
             
             #line 61 "..\..\Dashboard\Pages\LayoutPage.cshtml"
-                                                                           Write($"{version.Major}.{version.Minor}.{version.Build}");
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n                        </a>\r\n                    </li>\r\n                    <l" +
-"i>");
-
-
-            
-            #line 64 "..\..\Dashboard\Pages\LayoutPage.cshtml"
                    Write(Storage);
 
             
@@ -236,7 +213,7 @@ WriteLiteral("</li>\r\n                    <li>");
 
 
             
-            #line 65 "..\..\Dashboard\Pages\LayoutPage.cshtml"
+            #line 62 "..\..\Dashboard\Pages\LayoutPage.cshtml"
                    Write(Strings.LayoutPage_Footer_Time);
 
             
@@ -246,7 +223,7 @@ WriteLiteral(" ");
 
 
             
-            #line 65 "..\..\Dashboard\Pages\LayoutPage.cshtml"
+            #line 62 "..\..\Dashboard\Pages\LayoutPage.cshtml"
                                                    Write(Html.LocalTime(DateTime.UtcNow));
 
             
@@ -256,7 +233,7 @@ WriteLiteral("</li>\r\n                    <li>");
 
 
             
-            #line 66 "..\..\Dashboard\Pages\LayoutPage.cshtml"
+            #line 63 "..\..\Dashboard\Pages\LayoutPage.cshtml"
                    Write(String.Format(Strings.LayoutPage_Footer_Generatedms, GenerationTime.Elapsed.TotalMilliseconds.ToString("N")));
 
             
@@ -267,7 +244,7 @@ WriteLiteral("</li>\r\n                </ul>\r\n            </div>\r\n        </
 
 
             
-            #line 72 "..\..\Dashboard\Pages\LayoutPage.cshtml"
+            #line 69 "..\..\Dashboard\Pages\LayoutPage.cshtml"
                            Write(StatsPollingInterval);
 
             
@@ -277,7 +254,7 @@ WriteLiteral("\"\r\n             data-pollurl=\"");
 
 
             
-            #line 73 "..\..\Dashboard\Pages\LayoutPage.cshtml"
+            #line 70 "..\..\Dashboard\Pages\LayoutPage.cshtml"
                        Write(Url.To("/stats"));
 
             
@@ -287,7 +264,7 @@ WriteLiteral("\">\r\n        </div>\r\n\r\n        <script src=\"");
 
 
             
-            #line 76 "..\..\Dashboard\Pages\LayoutPage.cshtml"
+            #line 73 "..\..\Dashboard\Pages\LayoutPage.cshtml"
                 Write(Url.To($"/js{version.Major}{version.Minor}{version.Build}"));
 
             

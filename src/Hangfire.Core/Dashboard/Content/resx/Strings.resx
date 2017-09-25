@@ -338,7 +338,7 @@
     <value>Canceled</value>
   </data>
   <data name="RecurringJobsPage_NoJobs" xml:space="preserve">
-    <value>No recurring jobs found.</value>
+    <value>No scheduled jobs found.</value>
   </data>
   <data name="RecurringJobsPage_Table_Cron" xml:space="preserve">
     <value>Cron</value>
@@ -353,7 +353,7 @@
     <value>Time zone</value>
   </data>
   <data name="RecurringJobsPage_Title" xml:space="preserve">
-    <value>Recurring jobs</value>
+    <value>Scheduled jobs</value>
   </data>
   <data name="RecurringJobsPage_Triggering" xml:space="preserve">
     <value>Triggering...</value>
@@ -449,7 +449,7 @@
     <value>Jobs</value>
   </data>
   <data name="NavigationMenu_RecurringJobs" xml:space="preserve">
-    <value>Recurring Jobs</value>
+    <value>Scheduled Jobs</value>
   </data>
   <data name="NavigationMenu_Retries" xml:space="preserve">
     <value>Retries</value>
@@ -482,7 +482,7 @@
     <value>Processing Jobs</value>
   </data>
   <data name="Metrics_RecurringJobs" xml:space="preserve">
-    <value>Recurring Jobs</value>
+    <value>Scheduled Jobs</value>
   </data>
   <data name="Metrics_Retries" xml:space="preserve">
     <value>Retries</value>
@@ -522,5 +522,47 @@
   </data>
   <data name="HomePage_GraphHover_Succeeded" xml:space="preserve">
     <value>Succeeded</value>
+  </data>
+  <data name="Metrics_OnEventJobs" xml:space="preserve">
+    <value>On-event Jobs</value>
+  </data>
+  <data name="NavigationMenu_OnEventJobs" xml:space="preserve">
+    <value>On-event Jobs</value>
+  </data>
+  <data name="OnEventJobsPage_Canceled" xml:space="preserve">
+    <value>Canceled</value>
+  </data>
+  <data name="OnEventJobsPage_NoJobs" xml:space="preserve">
+    <value>No on event jobs found.</value>
+  </data>
+  <data name="OnEventJobsPage_Table_LastExecution" xml:space="preserve">
+    <value>Last execution</value>
+  </data>
+  <data name="OnEventJobsPage_Table_NextExecution" xml:space="preserve">
+    <value>Next execution</value>
+  </data>
+  <data name="OnEventJobsPage_Table_TimeZone" xml:space="preserve">
+    <value>Time zone</value>
+  </data>
+  <data name="OnEventJobsPage_Table_Trigger" xml:space="preserve">
+    <value>Trigger expression</value>
+  </data>
+  <data name="OnEventJobsPage_Title" xml:space="preserve">
+    <value>On-event jobs</value>
+  </data>
+  <data name="OnEventJobsPage_Triggering" xml:space="preserve">
+    <value>Triggering...</value>
+  </data>
+  <data name="OnEventJobsPage_TriggerNow" xml:space="preserve">
+    <value>Trigger now</value>
+  </data>
+  <data name="OnEventJobsPage_Table_Signal" xml:space="preserve">
+    <value>Signal</value>
+  </data>
+  <data name="OnEventJobsPage_Table_Name" xml:space="preserve">
+    <value>Report Name</value>
+  </data>
+  <data name="RecurringJobsPage_Table_Name" xml:space="preserve">
+    <value>Report Name</value>
   </data>
 </root>

@@ -54,7 +54,7 @@ namespace Hangfire
             var job = Job.FromExpression(methodCall);
             var id = GetRecurringJobId(job);
 
-            Instance.Value.AddOrUpdate(id, job, cronExpression, timeZone ?? TimeZoneInfo.Utc, queue);
+            Instance.Value.AddOrUpdate(id, job, String.Empty, cronExpression, timeZone ?? TimeZoneInfo.Utc, queue);
         }
 
         public static void AddOrUpdate<T>(
@@ -66,7 +66,7 @@ namespace Hangfire
             var job = Job.FromExpression(methodCall);
             var id = GetRecurringJobId(job);
 
-            Instance.Value.AddOrUpdate(id, job, cronExpression, timeZone ?? TimeZoneInfo.Utc, queue);
+            Instance.Value.AddOrUpdate(id, job, String.Empty, cronExpression, timeZone ?? TimeZoneInfo.Utc, queue);
         }
 
         public static void AddOrUpdate(
@@ -76,7 +76,7 @@ namespace Hangfire
             TimeZoneInfo timeZone = null,
             string queue = EnqueuedState.DefaultQueue)
         {
-            AddOrUpdate(recurringJobId, methodCall, cronExpression(), timeZone, queue);
+            AddOrUpdate(recurringJobId, methodCall, String.Empty, cronExpression(), timeZone, queue);
         }
 
         public static void AddOrUpdate<T>(
@@ -92,12 +92,13 @@ namespace Hangfire
         public static void AddOrUpdate(
             string recurringJobId,
             Expression<Action> methodCall,
+            string name,
             string cronExpression,
             TimeZoneInfo timeZone = null,
             string queue = EnqueuedState.DefaultQueue)
         {
             var job = Job.FromExpression(methodCall);
-            Instance.Value.AddOrUpdate(recurringJobId, job, cronExpression, timeZone ?? TimeZoneInfo.Utc, queue);
+            Instance.Value.AddOrUpdate(recurringJobId, job, name, cronExpression, timeZone ?? TimeZoneInfo.Utc, queue);
         }
 
         public static void AddOrUpdate<T>(
@@ -108,7 +109,7 @@ namespace Hangfire
             string queue = EnqueuedState.DefaultQueue)
         {
             var job = Job.FromExpression(methodCall);
-            Instance.Value.AddOrUpdate(recurringJobId, job, cronExpression, timeZone ?? TimeZoneInfo.Utc, queue);
+            Instance.Value.AddOrUpdate(recurringJobId, job, String.Empty, cronExpression, timeZone ?? TimeZoneInfo.Utc, queue);
         }
 
         public static void AddOrUpdate(
@@ -138,7 +139,7 @@ namespace Hangfire
             var job = Job.FromExpression(methodCall);
             var id = GetRecurringJobId(job);
 
-            Instance.Value.AddOrUpdate(id, job, cronExpression, timeZone ?? TimeZoneInfo.Utc, queue);
+            Instance.Value.AddOrUpdate(id, job, String.Empty, cronExpression, timeZone ?? TimeZoneInfo.Utc, queue);
         }
 
         public static void AddOrUpdate<T>(
@@ -150,7 +151,7 @@ namespace Hangfire
             var job = Job.FromExpression(methodCall);
             var id = GetRecurringJobId(job);
 
-            Instance.Value.AddOrUpdate(id, job, cronExpression, timeZone ?? TimeZoneInfo.Utc, queue);
+            Instance.Value.AddOrUpdate(id, job, String.Empty, cronExpression, timeZone ?? TimeZoneInfo.Utc, queue);
         }
         
         public static void AddOrUpdate(
@@ -181,7 +182,7 @@ namespace Hangfire
             string queue = EnqueuedState.DefaultQueue)
         {
             var job = Job.FromExpression(methodCall);
-            Instance.Value.AddOrUpdate(recurringJobId, job, cronExpression, timeZone ?? TimeZoneInfo.Utc, queue);
+            Instance.Value.AddOrUpdate(recurringJobId, job, String.Empty, cronExpression, timeZone ?? TimeZoneInfo.Utc, queue);
         }
 
         public static void AddOrUpdate<T>(
@@ -192,7 +193,7 @@ namespace Hangfire
             string queue = EnqueuedState.DefaultQueue)
         {
             var job = Job.FromExpression(methodCall);
-            Instance.Value.AddOrUpdate(recurringJobId, job, cronExpression, timeZone ?? TimeZoneInfo.Utc, queue);
+            Instance.Value.AddOrUpdate(recurringJobId, job, String.Empty, cronExpression, timeZone ?? TimeZoneInfo.Utc, queue);
         }
 
         public static void RemoveIfExists(string recurringJobId)

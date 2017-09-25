@@ -331,6 +331,7 @@ select sum(s.[Value]) from (
 ) as s;
 
 select count(*) from [{0}].[Set] with (nolock) where [Key] = N'recurring-jobs';
+select count(*) from [{0}].[Set] with (nolock) where [Key] = N'on-event-jobs';
                 ", _storage.SchemaName);
 
             var statistics = UseConnection(connection =>
@@ -349,6 +350,7 @@ select count(*) from [{0}].[Set] with (nolock) where [Key] = N'recurring-jobs';
                     stats.Deleted = multi.ReadSingleOrDefault<long?>() ?? 0;
 
                     stats.Recurring = multi.ReadSingle<int>();
+                    stats.OnEvent = multi.ReadSingle<int>();
                 }
                 return stats;
             });

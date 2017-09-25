@@ -197,7 +197,10 @@ namespace Hangfire.Server
                     changedFields.Add("LastExecution", JobHelper.SerializeDateTime(nowInstant.NowInstant));
                     changedFields.Add("LastJobId", jobId ?? String.Empty);
                 }
-                
+
+                String n = recurringJob.ContainsKey("Name") ? recurringJob["Name"] : String.Empty;
+
+                changedFields.Add("Name", n);
                 // Fixing old recurring jobs that doesn't have the CreatedAt field
                 if (!recurringJob.ContainsKey("CreatedAt"))
                 {

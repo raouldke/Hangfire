@@ -10,10 +10,11 @@
 
 using System.Reflection;
 
-namespace Hangfire.Dashboard.Resources {
+namespace Hangfire.Dashboard.Resources
+{
     using System;
-    
-    
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -24,30 +25,35 @@ namespace Hangfire.Dashboard.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Strings {
-        
+    public class Strings
+    {
+
         private static global::System.Resources.ResourceManager resourceMan;
-        
+
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Strings() {
+        internal Strings()
+        {
         }
-        
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
-            get {
-                if (object.ReferenceEquals(resourceMan, null)) {
+        public static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if (object.ReferenceEquals(resourceMan, null))
+                {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hangfire.Dashboard.Content.resx.Strings", typeof(Strings).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
@@ -757,6 +763,15 @@ namespace Hangfire.Dashboard.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to On-event Jobs.
+        /// </summary>
+        public static string Metrics_OnEventJobs {
+            get {
+                return ResourceManager.GetString("Metrics_OnEventJobs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Processing Jobs.
         /// </summary>
         public static string Metrics_ProcessingJobs {
@@ -766,7 +781,7 @@ namespace Hangfire.Dashboard.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Recurring Jobs.
+        ///   Looks up a localized string similar to Scheduled Jobs.
         /// </summary>
         public static string Metrics_RecurringJobs {
             get {
@@ -829,7 +844,16 @@ namespace Hangfire.Dashboard.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Recurring Jobs.
+        ///   Looks up a localized string similar to On-event Jobs.
+        /// </summary>
+        public static string NavigationMenu_OnEventJobs {
+            get {
+                return ResourceManager.GetString("NavigationMenu_OnEventJobs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scheduled Jobs.
         /// </summary>
         public static string NavigationMenu_RecurringJobs {
             get {
@@ -852,6 +876,105 @@ namespace Hangfire.Dashboard.Resources {
         public static string NavigationMenu_Servers {
             get {
                 return ResourceManager.GetString("NavigationMenu_Servers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Canceled.
+        /// </summary>
+        public static string OnEventJobsPage_Canceled {
+            get {
+                return ResourceManager.GetString("OnEventJobsPage_Canceled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No on event jobs found..
+        /// </summary>
+        public static string OnEventJobsPage_NoJobs {
+            get {
+                return ResourceManager.GetString("OnEventJobsPage_NoJobs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last execution.
+        /// </summary>
+        public static string OnEventJobsPage_Table_LastExecution {
+            get {
+                return ResourceManager.GetString("OnEventJobsPage_Table_LastExecution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report Name.
+        /// </summary>
+        public static string OnEventJobsPage_Table_Name {
+            get {
+                return ResourceManager.GetString("OnEventJobsPage_Table_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next execution.
+        /// </summary>
+        public static string OnEventJobsPage_Table_NextExecution {
+            get {
+                return ResourceManager.GetString("OnEventJobsPage_Table_NextExecution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signal.
+        /// </summary>
+        public static string OnEventJobsPage_Table_Signal {
+            get {
+                return ResourceManager.GetString("OnEventJobsPage_Table_Signal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time zone.
+        /// </summary>
+        public static string OnEventJobsPage_Table_TimeZone {
+            get {
+                return ResourceManager.GetString("OnEventJobsPage_Table_TimeZone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trigger expression.
+        /// </summary>
+        public static string OnEventJobsPage_Table_Trigger {
+            get {
+                return ResourceManager.GetString("OnEventJobsPage_Table_Trigger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On-event jobs.
+        /// </summary>
+        public static string OnEventJobsPage_Title {
+            get {
+                return ResourceManager.GetString("OnEventJobsPage_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Triggering....
+        /// </summary>
+        public static string OnEventJobsPage_Triggering {
+            get {
+                return ResourceManager.GetString("OnEventJobsPage_Triggering", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trigger now.
+        /// </summary>
+        public static string OnEventJobsPage_TriggerNow {
+            get {
+                return ResourceManager.GetString("OnEventJobsPage_TriggerNow", resourceCulture);
             }
         }
         
@@ -955,7 +1078,7 @@ namespace Hangfire.Dashboard.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nexts jobs.
+        ///   Looks up a localized string similar to Next jobs.
         /// </summary>
         public static string QueuesPage_Table_NextsJobs {
             get {
@@ -991,7 +1114,7 @@ namespace Hangfire.Dashboard.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No recurring jobs found..
+        ///   Looks up a localized string similar to No scheduled jobs found..
         /// </summary>
         public static string RecurringJobsPage_NoJobs {
             get {
@@ -1018,6 +1141,15 @@ namespace Hangfire.Dashboard.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Report Name.
+        /// </summary>
+        public static string RecurringJobsPage_Table_Name {
+            get {
+                return ResourceManager.GetString("RecurringJobsPage_Table_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Next execution.
         /// </summary>
         public static string RecurringJobsPage_Table_NextExecution {
@@ -1036,7 +1168,7 @@ namespace Hangfire.Dashboard.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Recurring jobs.
+        ///   Looks up a localized string similar to Scheduled jobs.
         /// </summary>
         public static string RecurringJobsPage_Title {
             get {

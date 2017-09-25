@@ -39,13 +39,14 @@ namespace Hangfire
             [NotNull] string cronExpression,
             [NotNull] TimeZoneInfo timeZone)
         {
-            AddOrUpdate(manager, recurringJobId, job, cronExpression, timeZone, EnqueuedState.DefaultQueue);
+            AddOrUpdate(manager, recurringJobId, job, String.Empty, cronExpression, timeZone, EnqueuedState.DefaultQueue);
         }
 
         public static void AddOrUpdate(
             [NotNull] this IRecurringJobManager manager,
             [NotNull] string recurringJobId,
             [NotNull] Job job,
+            string name,
             [NotNull] string cronExpression,
             [NotNull] TimeZoneInfo timeZone,
             [NotNull] string queue)
@@ -58,7 +59,7 @@ namespace Hangfire
                 recurringJobId,
                 job,
                 cronExpression,
-                new RecurringJobOptions { QueueName = queue, TimeZone = timeZone });
+                new RecurringJobOptions { QueueName = queue, TimeZone = timeZone, ReportName  = name});
         }
     }
 }

@@ -71,6 +71,7 @@ namespace Hangfire
                 recurringJob["Cron"] = cronExpression;
                 recurringJob["TimeZoneId"] = options.TimeZone.Id;
                 recurringJob["Queue"] = options.QueueName;
+                recurringJob["Name"] = options.ReportName;
 
                 var existingJob = connection.GetAllEntriesFromHash($"recurring-job:{recurringJobId}");
                 if (existingJob == null)

@@ -41,6 +41,7 @@ namespace Hangfire.Dashboard
             AddMetric(FailedCount);
             AddMetric(DeletedCount);
             AddMetric(AwaitingCount);
+            AddMetric(OnEventJobCount);
         }
 
         public static void AddMetric([NotNull] DashboardMetric metric)
@@ -77,6 +78,11 @@ namespace Hangfire.Dashboard
             "recurring:count",
             "Metrics_RecurringJobs",
             page => new Metric(page.Statistics.Recurring.ToString("N0")));
+
+        public static readonly DashboardMetric OnEventJobCount = new DashboardMetric(
+            "onevent:count",
+            "Metrics_OnEventJobs",
+            page => new Metric(page.Statistics.OnEvent.ToString("N0")));
 
         public static readonly DashboardMetric RetriesCount = new DashboardMetric(
             "retries:count",

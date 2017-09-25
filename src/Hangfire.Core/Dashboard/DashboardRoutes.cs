@@ -44,7 +44,9 @@ namespace Hangfire.Dashboard
         static DashboardRoutes()
         {
             Routes = new RouteCollection();
-            Routes.AddRazorPage("/", x => new HomePage());
+            Routes.AddRazorPage("/",  x => new ProcessingJobsPage());
+
+            Routes.AddRazorPage("/dash", x => new HomePage());
             Routes.Add("/stats", new JsonStats());
             
             #region Embedded static content
@@ -166,7 +168,10 @@ namespace Hangfire.Dashboard
 
             Routes.AddRazorPage("/jobs/details/(?<JobId>.+)", x => new JobDetailsPage(x.Groups["JobId"].Value));
 
+            Routes.AddRazorPage("/onevent", x => new OnEventJobsPage());
+
             Routes.AddRazorPage("/recurring", x => new RecurringJobsPage());
+
             Routes.AddRecurringBatchCommand(
                 "/recurring/remove", 
                 (manager, jobId) => manager.RemoveIfExists(jobId));
@@ -174,6 +179,14 @@ namespace Hangfire.Dashboard
             Routes.AddRecurringBatchCommand(
                 "/recurring/trigger", 
                 (manager, jobId) => manager.Trigger(jobId));
+
+            Routes.AddOnEventBatchCommand(
+                "/onevent/trigger",
+                (manager, jobId) => manager.Trigger(jobId));
+
+            Routes.AddOnEventBatchCommand(
+                "/onevent/remove",
+                (manager, jobId) => manager.RemoveIfExists(jobId));
 
             Routes.AddRazorPage("/servers", x => new ServersPage());
             Routes.AddRazorPage("/retries", x => new RetriesPage());

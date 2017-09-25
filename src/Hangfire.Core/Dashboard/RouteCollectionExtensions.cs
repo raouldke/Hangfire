@@ -115,5 +115,19 @@ namespace Hangfire.Dashboard
                 command(manager, jobId);
             });
         }
+
+        public static void AddOnEventBatchCommand(
+            this RouteCollection routes,
+            string pathTemplate,
+            [NotNull] Action<IOnEventJobManager, string> command)
+        {
+            if (command == null) throw new ArgumentNullException(nameof(command));
+
+            routes.AddBatchCommand(pathTemplate, (context, jobId) =>
+            {
+                var manager = new OnEventJobManager(context.Storage);
+                command(manager, jobId);
+            });
+        }
     }
 }

@@ -20,6 +20,7 @@ namespace Hangfire.Storage.Monitoring
     {
         public long Servers { get; set; }
         public long Recurring { get; set; }
+        public long OnEvent { get; set; }
         public long Enqueued { get; set; }
         public long Queues { get; set; }
         public long Scheduled { get; set; }

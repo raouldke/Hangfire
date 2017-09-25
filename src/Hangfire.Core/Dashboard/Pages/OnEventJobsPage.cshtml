@@ -7,36 +7,49 @@
 @using Hangfire.Storage
 @inherits RazorPage
 @{
-    Layout = new LayoutPage(Strings.RecurringJobsPage_Title);
-	List<RecurringJobDto> recurringJobs;
+    Layout = new LayoutPage(Strings.OnEventJobsPage_Title);
+    List<OnEventJobDto> onEventJobs;
 
-    int.TryParse(Query("from"), out var from);
-    int.TryParse(Query("count"), out var perPage);
+    int from, perPage;
+
+    int.TryParse(Query("from"), out from);
+    int.TryParse(Query("count"), out perPage);
 
     Pager pager = null;
 
-	using (var connection = Storage.GetConnection())
-	{
-	    if (connection is JobStorageConnection storageConnection)
-	    {
-	        pager = new Pager(from, perPage, storageConnection.GetRecurringJobCount());
-	        recurringJobs = storageConnection.GetRecurringJobs(pager.FromRecord, pager.FromRecord + pager.RecordsPerPage);
-	    }
-	    else
-	    {
-            recurringJobs = connection.GetRecurringJobs();
-	    }
-	}
+    using (var connection = Storage.GetConnection())
+    {
+        var storageConnection = connection as JobStorageConnection;
+        if (storageConnection != null)
+        {
+            pager = new Pager(from, perPage, storageConnection.GetOnEventJobCount());
+            onEventJobs = storageConnection.GetOnEventJobs(pager.FromRecord, pager.FromRecord + pager.RecordsPerPage);
+        }
+        else
+        {
+            onEventJobs = connection.GetOnEventJobs();
+        }
+    }
 }
+<style>
+    .table {
+        /*table-layout: fixed;*/
+    }
 
+        .table td {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+</style>
 <div class="row">
     <div class="col-md-12">
-        <h1 class="page-header">@Strings.RecurringJobsPage_Title</h1>
+        <h1 class="page-header">@Strings.OnEventJobsPage_Title</h1>
 
-        @if (recurringJobs.Count == 0)
+        @if (onEventJobs.Count == 0)
         {
             <div class="alert alert-info">
-                @Strings.RecurringJobsPage_NoJobs
+                @Strings.OnEventJobsPage_NoJobs
             </div>
         }
         else
@@ -44,15 +57,15 @@
             <div class="js-jobs-list">
                 <div class="btn-toolbar btn-toolbar-top">
                     <button class="js-jobs-list-command btn btn-sm btn-primary"
-                            data-url="@Url.To("/recurring/trigger")"
-                            data-loading-text="@Strings.RecurringJobsPage_Triggering"
+                            data-url="@Url.To("/onevent/trigger")"
+                            data-loading-text="@Strings.OnEventJobsPage_Triggering"
                             disabled="disabled">
                         <span class="glyphicon glyphicon-play-circle"></span>
-                        @Strings.RecurringJobsPage_TriggerNow
+                        @Strings.OnEventJobsPage_TriggerNow
                     </button>
 
                     <button class="js-jobs-list-command btn btn-sm btn-default"
-                            data-url="@Url.To("/recurring/remove")"
+                            data-url="@Url.To("/onevent/remove")"
                             data-loading-text="@Strings.Common_Deleting"
                             data-confirm="@Strings.Common_DeleteConfirm"
                             disabled="disabled">
@@ -73,47 +86,53 @@
                                 <th class="min-width">
                                     <input type="checkbox" class="js-jobs-list-select-all" />
                                 </th>
-                              @*  <th class="min-width">@Strings.Common_Id</th>*@
-                                <th class="min-width">@Strings.RecurringJobsPage_Table_Cron</th>
-                                <th class="min-width">@Strings.RecurringJobsPage_Table_Name</th>
-                                <th>@Strings.Common_Job</th>
-                                <th class="align-right min-width">@Strings.RecurringJobsPage_Table_NextExecution</th>
-                                <th class="align-right min-width">@Strings.RecurringJobsPage_Table_LastExecution</th>
+                                @*<th class="min-width">@Strings.Common_Id</th>*@
+                                <th class="min-width">@Strings.OnEventJobsPage_Table_Signal</th>
+                                <th class="min-width">@Strings.OnEventJobsPage_Table_Trigger</th>
+                                <th class="min-width">@Strings.OnEventJobsPage_Table_Name</th>
+                                <th class="align-right min-width">@Strings.OnEventJobsPage_Table_LastExecution</th>
                                 <th class="align-right min-width">@Strings.Common_Created</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var job in recurringJobs)
+                            @foreach (var job in onEventJobs)
                             {
                                 <tr class="js-jobs-list-row hover">
                                     <td>
                                         <input type="checkbox" class="js-jobs-list-checkbox" name="jobs[]" value="@job.Id" />
                                     </td>
-                                    @*<td class="min-width">@job.Id</td>*@
+                                    @*<td class="min-width" style="max-width:200px">@job.Id</td>*@
+
                                     <td class="min-width">
                                         @* ReSharper disable once EmptyGeneralCatchClause *@
                                         @{
-                                            string cronDescription = null;
-#if NETFULL
-                                            try
-                                            {
-                                                cronDescription = string.IsNullOrEmpty(job.Cron) ? null : CronExpressionDescriptor.ExpressionDescriptor.GetDescription(job.Cron);
-                                            }
-                                            catch (FormatException)
-                                            {
-                                            }
-#endif
+                                            string triggerSignal = job.TriggerSignal;
+
                                         }
 
-                                        @if (cronDescription != null)
+                                        @if (triggerSignal != null)
                                         {
-                                            <code title="@cronDescription">@job.Cron</code>
+                                            <code title="@triggerSignal">@triggerSignal</code>
+                                        }
+                                        
+                                    </td>
+
+                                    <td class="min-width">
+                                        @* ReSharper disable once EmptyGeneralCatchClause *@
+                                        @{
+                                            string triggerExpression = job.TriggerExpression;
+                                        }
+
+                                        @if (triggerExpression != null)
+                                        {
+                                            <code title="@triggerExpression">@job.TriggerExpression</code>
                                         }
                                         else
                                         {
-                                            <code>@job.Cron</code>
+                                            <code>@job.TriggerExpression</code>
                                         }
                                     </td>
+
                                     <td class="min-width">
                                         @if (!String.IsNullOrWhiteSpace(job.Name))
                                         {
@@ -121,26 +140,7 @@
                                         }
                                         
                                     </td>
-                                    <td class="word-break">
-                                        @if (job.Job != null)
-                                        {
-                                            @: @Html.JobName(job.Job)
-                                        }
-                                        else
-                                        {
-                                            <em>@job.LoadException.InnerException.Message</em>
-                                        }
-                                    </td>
-                                    <td class="align-right min-width">
-                                        @if (job.NextExecution != null)
-                                        {
-                                            @Html.RelativeTime(job.NextExecution.Value)
-                                        }
-                                        else
-                                        {
-                                            <em>@Strings.Common_NotAvailable</em>
-                                        }
-                                    </td>
+                                    
                                     <td class="align-right min-width">
                                         @if (job.LastExecution != null)
                                         {
@@ -155,7 +155,7 @@
                                             else
                                             {
                                                 <em>
-                                                    @Strings.RecurringJobsPage_Canceled @Html.RelativeTime(job.LastExecution.Value)
+                                                    @Strings.OnEventJobsPage_Canceled @Html.RelativeTime(job.LastExecution.Value)
                                                 </em>
                                             }
                                         }

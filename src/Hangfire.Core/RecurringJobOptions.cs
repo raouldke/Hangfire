@@ -24,6 +24,7 @@ namespace Hangfire
     {
         private TimeZoneInfo _timeZone;
         private string _queueName;
+        public string ReportName { get; set; }
 
         public RecurringJobOptions()
         {

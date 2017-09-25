@@ -27,6 +27,7 @@ namespace Hangfire.Storage
         public Job Job { get; set; }
         public JobLoadException LoadException { get; set; }
         public DateTime? NextExecution { get; set; }
+        public  String Name { get; set; }
         public string LastJobId { get; set; }
         public string LastJobState { get; set; }
         public DateTime? LastExecution { get; set; }

@@ -36,11 +36,11 @@ namespace Hangfire.Dashboard
                 }
             });
 
-            Items.Add(page => new MenuItem(Strings.NavigationMenu_Retries, page.Url.To("/retries"))
+          /*  Items.Add(page => new MenuItem(Strings.NavigationMenu_Retries, page.Url.To("/retries"))
             {
                 Active = page.RequestPath.StartsWith("/retries"),
                 Metric = DashboardMetrics.RetriesCount
-            });
+            });*/
 
             Items.Add(page => new MenuItem(Strings.NavigationMenu_RecurringJobs, page.Url.To("/recurring"))
             {
@@ -48,7 +48,13 @@ namespace Hangfire.Dashboard
                 Metric = DashboardMetrics.RecurringJobCount
             });
 
-            Items.Add(page => new MenuItem(Strings.NavigationMenu_Servers, page.Url.To("/servers"))
+            Items.Add(page => new MenuItem(Strings.NavigationMenu_OnEventJobs, page.Url.To("/onevent"))
+            {
+                Active = page.RequestPath.StartsWith("/onevent"),
+                Metric = DashboardMetrics.OnEventJobCount
+            });
+
+           Items.Add(page => new MenuItem(Strings.NavigationMenu_Servers, null/* page.Url.To("/servers")*/)
             {
                 Active = page.RequestPath.Equals("/servers"),
                 Metric = DashboardMetrics.ServerCount

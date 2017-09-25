@@ -27,17 +27,17 @@ namespace Hangfire.Dashboard
 
         static JobsSidebarMenu()
         {
-            Items.Add(page => new MenuItem(Strings.JobsSidebarMenu_Enqueued, page.Url.LinkToQueues())
-            {
-                Active = page.RequestPath.StartsWith("/jobs/enqueued"),
-                Metric = DashboardMetrics.EnqueuedAndQueueCount
-            });
+            //Items.Add(page => new MenuItem(Strings.JobsSidebarMenu_Enqueued, page.Url.LinkToQueues())
+            //{
+            //    Active = page.RequestPath.StartsWith("/jobs/enqueued"),
+            //    Metric = DashboardMetrics.EnqueuedAndQueueCount
+            //});
 
-            Items.Add(page => new MenuItem(Strings.JobsSidebarMenu_Scheduled, page.Url.To("/jobs/scheduled"))
-            {
-                Active = page.RequestPath.StartsWith("/jobs/scheduled"),
-                Metric = DashboardMetrics.ScheduledCount
-            });
+            //Items.Add(page => new MenuItem(Strings.JobsSidebarMenu_Scheduled, page.Url.To("/jobs/scheduled"))
+            //{
+            //    Active = page.RequestPath.StartsWith("/jobs/scheduled"),
+            //    Metric = DashboardMetrics.ScheduledCount
+            //});
 
             Items.Add(page => new MenuItem(Strings.JobsSidebarMenu_Processing, page.Url.To("/jobs/processing"))
             {
@@ -63,11 +63,11 @@ namespace Hangfire.Dashboard
                 Metric = DashboardMetrics.DeletedCount
             });
 
-            Items.Add(page => new MenuItem(Strings.JobsSidebarMenu_Awaiting, page.Url.To("/jobs/awaiting"))
-            {
-                Active = page.RequestPath.StartsWith("/jobs/awaiting"),
-                Metric = DashboardMetrics.AwaitingCount
-            });
+            //Items.Add(page => new MenuItem(Strings.JobsSidebarMenu_Awaiting, page.Url.To("/jobs/awaiting"))
+            //{
+            //    Active = page.RequestPath.StartsWith("/jobs/awaiting"),
+            //    Metric = DashboardMetrics.AwaitingCount
+            //});
         }
     }
 }
